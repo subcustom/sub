@@ -1,677 +1,678 @@
 {
-    "log": {
-        "dnsLog": false,
-        "loglevel": "info"
-    },
-    "dns": {
-        "queryStrategy": "UseIP",
-        "servers": [
-            "fakedns",
-            "9.9.9.9",
-            "8.8.8.8",
-            "8.8.4.4",
-            "1.1.1.1"
+  "log": {
+    "dnsLog": false,
+    "loglevel": "info"
+  },
+  "dns": {
+    "queryStrategy": "UseIP",
+    "servers": [
+      "fakedns",
+      "9.9.9.9",
+      "8.8.8.8",
+      "8.8.4.4",
+      "1.1.1.1"
+    ],
+    "tag": "dns-in"
+  },
+  "routing": {
+    "balancers": [
+      {
+        "selector": [
+          "proxy",
+          "proxy1",
+          "proxy2",
+          "proxy3",
+          "proxy4",
+          "proxy5",
+          "proxy6",
+          "proxy7",
+          "proxy8",
+          "proxy9",
+          "proxy10"
         ],
-        "tag": "dns-in"
-    },
-    "routing": {
-        "balancers": [
-            {
-                "selector": [
-                    "proxy",
-                    "proxy1",
-                    "proxy2",
-                    "proxy3",
-                    "proxy4",
-                    "proxy5",
-                    "proxy6",
-                    "proxy7",
-                    "proxy8",
-                    "proxy9",
-                    "proxy10"
-                ],
-                "strategy": {
-                    "type": "LeastLoad"
-                },
-                "tag": "balancer"
-            }
+        "strategy": {
+          "type": "LeastLoad"
+        },
+        "tag": "balancer"
+      }
+    ],
+    "domainMatcher": "hybrid",
+    "domainStrategy": "Ipifnonmatch",
+    "rules": [
+      {
+        "outboundtag": "dns-out",
+        "network": "udp",
+        "port": "53",
+        "type": "field"
+      },
+      {
+        "outboundtag": "direct",
+        "network": "tcp",
+        "port": "53",
+        "type": "field"
+      },
+      {
+        "outboundtag": "direct",
+        "network": "udp",
+        "port": "1-52,54-65535",
+        "type": "field"
+      },
+      {
+        "domain": [
+          "geosite:private",
+          "domain:ir",
+          "domain:ttvnw.net",
+          "domain:aparat.com",
+          "domain:telewebion.com",
+          "domain:namasha.com"
         ],
-        "domainMatcher": "hybrid",
-        "domainStrategy": "Ipifnonmatch",
-        "rules": [
-            {
-                "outboundtag": "dns-out",
-                "network": "udp",
-                "port": "53",
-                "type": "field"
-            },
-            {
-                "outboundtag": "direct",
-                "network": "tcp",
-                "port": "53",
-                "type": "field"
-            },
-            {
-                "outboundtag": "direct",
-                "network": "udp",
-                "port": "1-52,54-65535",
-                "type": "field"
-            },
-            {
-                "domain": [
-                    "geosite:private",
-                    "domain:ir",
-                    "domain:ttvnw.net",
-                    "domain:aparat.com",
-                    "domain:telewebion.com",
-                    "domain:namasha.com"
-                ],
-                "outboundTag": "direct",
-                "type": "field"
-            },
-            {
-                "ip": [
-                    "geoip:private"
-                ],
-                "outboundTag": "direct",
-                "type": "field"
-            },
-            {
-                "balancerTag": "balancer",
-                "port": "1-65535"
-            }
-        ]
+        "outboundTag": "direct",
+        "type": "field"
+      },
+      {
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "direct",
+        "type": "field"
+      },
+      {
+        "balancerTag": "balancer",
+        "port": "1-65535"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "0.0.0.0",
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "udp": true
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls",
+          "fakedns"
+        ],
+        "enabled": true
+      },
+      "tag": "socks"
     },
-    "inbounds": [
-        {
-            "listen": "0.0.0.0",
-            "port": 10808,
-            "protocol": "socks",
-            "settings": {
-                "udp": true
-            },
-            "sniffing": {
-                "destOverride": [
-                    "http",
-                    "tls",
-                    "fakedns"
-                ],
-                "enabled": true
-            },
-            "tag": "socks"
-        },
-        {
-            "listen": "0.0.0.0",
-            "port": 10809,
-            "protocol": "http",
-            "sniffing": {
-                "destOverride": [
-                    "http",
-                    "tls",
-                    "fakedns"
-                ],
-                "enabled": true
-            },
-            "tag": "http"
-        }
-    ],
-    "outbounds": [
-        {
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "45.159.149.39",
-                        "port": 443,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": true,
-                    "alpn": [
-                        "h3"
-                    ],
-                    "minVersion": "1.3",
-                    "serverName": "pages.dev"
-                },
-                "wsSettings": {
-                    "headers": {
-                        "Host": "6kmed.pages.dev"
-                    },
-                    "path": "/?ed=2048",
-                    "heartbeatPeriod": 1
-                },
-                "sockopt": {
-                    "dialerProxy": "fragment",
-                    "tcpKeepAliveIdle": 60,
-                    "tcpNoDelay": true,
-                    "tcpFastOpen": true,
-                    "mark": 255
-                }
-            },
-            "tag": "proxy"
-        },
-        {
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "193.105.6.84",
-                        "port": 443,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": true,
-                    "alpn": [
-                        "h3"
-                    ],
-                    "minVersion": "1.3",
-                    "serverName": "pages.dev"
-                },
-                "wsSettings": {
-                    "headers": {
-                        "Host": "6kmed.pages.dev"
-                    },
-                    "path": "/?ed=2048",
-                    "heartbeatPeriod": 1
-                },
-                "sockopt": {
-                    "dialerProxy": "fragment",
-                    "tcpKeepAliveIdle": 60,
-                    "tcpNoDelay": true,
-                    "tcpFastOpen": true,
-                    "mark": 255
-                }
-            },
-            "tag": "proxy1"
-        },
-        {
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "37.32.12.201",
-                        "port": 443,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": true,
-                    "alpn": [
-                        "h3"
-                    ],
-                    "minVersion": "1.3",
-                    "serverName": "pages.dev"
-                },
-                "wsSettings": {
-                    "headers": {
-                        "Host": "6kmed.pages.dev"
-                    },
-                    "path": "/?ed=2048",
-                    "heartbeatPeriod": 1
-                },
-                "sockopt": {
-                    "dialerProxy": "fragment",
-                    "tcpKeepAliveIdle": 60,
-                    "tcpNoDelay": true,
-                    "tcpFastOpen": true,
-                    "mark": 255
-                }
-            },
-            "tag": "proxy2"
-        },
-        {
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "62.60.233.213",
-                        "port": 443,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": true,
-                    "alpn": [
-                        "h3"
-                    ],
-                    "minVersion": "1.3",
-                    "serverName": "pages.dev"
-                },
-                "wsSettings": {
-                    "headers": {
-                        "Host": "6kmed.pages.dev"
-                    },
-                    "path": "/?ed=2048",
-                    "heartbeatPeriod": 1
-                },
-                "sockopt": {
-                    "dialerProxy": "fragment",
-                    "tcpKeepAliveIdle": 60,
-                    "tcpNoDelay": true,
-                    "tcpFastOpen": true,
-                    "mark": 255
-                }
-            },
-            "tag": "proxy3"
-        },
-        {
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "188.121.119.90",
-                        "port": 443,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": true,
-                    "alpn": [
-                        "h3"
-                    ],
-                    "minVersion": "1.3",
-                    "serverName": "pages.dev"
-                },
-                "wsSettings": {
-                    "headers": {
-                        "Host": "6kmed.pages.dev"
-                    },
-                    "path": "/?ed=2048",
-                    "heartbeatPeriod": 1
-                },
-                "sockopt": {
-                    "dialerProxy": "fragment",
-                    "tcpKeepAliveIdle": 60,
-                    "tcpNoDelay": true,
-                    "tcpFastOpen": true,
-                    "mark": 255
-                }
-            },
-            "tag": "proxy4"
-        },
-        {
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "62.60.185.200",
-                        "port": 2096,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": true,
-                    "alpn": [
-                        "h3"
-                    ],
-                    "minVersion": "1.3",
-                    "serverName": "pages.dev"
-                },
-                "wsSettings": {
-                    "headers": {
-                        "Host": "6kmed.pages.dev"
-                    },
-                    "path": "/?ed=2048",
-                    "heartbeatPeriod": 1
-                },
-                "sockopt": {
-                    "dialerProxy": "fragment",
-                    "tcpKeepAliveIdle": 60,
-                    "tcpNoDelay": true,
-                    "tcpFastOpen": true,
-                    "mark": 255
-                }
-            },
-            "tag": "proxy5"
-        },
-        {
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "84.47.234.19",
-                        "port": 443,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": true,
-                    "alpn": [
-                        "h3"
-                    ],
-                    "minVersion": "1.3",
-                    "serverName": "pages.dev"
-                },
-                "wsSettings": {
-                    "headers": {
-                        "Host": "6kmed.pages.dev"
-                    },
-                    "path": "/?ed=2048",
-                    "heartbeatPeriod": 1
-                },
-                "sockopt": {
-                    "dialerProxy": "fragment",
-                    "tcpKeepAliveIdle": 60,
-                    "tcpNoDelay": true,
-                    "tcpFastOpen": true,
-                    "mark": 255
-                }
-            },
-            "tag": "proxy6"
-        },
-        {
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "213.176.2.99",
-                        "port": 2053,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": true,
-                    "alpn": [
-                        "h3"
-                    ],
-                    "minVersion": "1.3",
-                    "serverName": "pages.dev"
-                },
-                "wsSettings": {
-                    "headers": {
-                        "Host": "6kmed.pages.dev"
-                    },
-                    "path": "/?ed=2048",
-                    "heartbeatPeriod": 1
-                },
-                "sockopt": {
-                    "dialerProxy": "fragment",
-                    "tcpKeepAliveIdle": 60,
-                    "tcpNoDelay": true,
-                    "tcpFastOpen": true,
-                    "mark": 255
-                }
-            },
-            "tag": "proxy7"
-        },
-        {
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "188.245.189.10",
-                        "port": 443,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": true,
-                    "alpn": [
-                        "h3"
-                    ],
-                    "minVersion": "1.3",
-                    "serverName": "pages.dev"
-                },
-                "wsSettings": {
-                    "headers": {
-                        "Host": "6kmed.pages.dev"
-                    },
-                    "path": "/?ed=2048",
-                    "heartbeatPeriod": 1
-                },
-               "sockopt": {
-                    "dialerProxy": "fragment",
-                    "tcpKeepAliveIdle": 60,
-                    "tcpNoDelay": true,
-                    "tcpFastOpen": true,
-                    "mark": 255
-                }
-            },
-            "tag": "proxy8"
-        },
-        {
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "194.5.195.50",
-                        "port": 443,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": true,
-                    "alpn": [
-                        "h3"
-                    ],
-                    "minVersion": "1.3",
-                    "serverName": "pages.dev"
-                },
-                "wsSettings": {
-                    "headers": {
-                        "Host": "6kmed.pages.dev"
-                    },
-                    "path": "/?ed=2048",
-                    "heartbeatPeriod": 1
-                },
-                "sockopt": {
-                    "dialerProxy": "fragment",
-                    "tcpKeepAliveIdle": 60,
-                    "tcpNoDelay": true,
-                    "tcpFastOpen": true,
-                    "mark": 255
-                }
-            },
-            "tag": "proxy9"
-        },
-        {
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "37.32.13.3",
-                        "port": 2053,
-                        "users": [
-                            {
-                                "encryption": "none",
-                                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "tls",
-                "tlsSettings": {
-                    "allowInsecure": true,
-                    "alpn": [
-                        "h3"
-                    ],
-                    "minVersion": "1.3",
-                    "serverName": "pages.dev"
-                },
-                "wsSettings": {
-                    "headers": {
-                        "Host": "6kmed.pages.dev"
-                    },
-                    "path": "/?ed=2048",
-                    "heartbeatPeriod": 1
-                },
-                "sockopt": {
-                    "dialerProxy": "fragment",
-                    "tcpKeepAliveIdle": 60,
-                    "tcpNoDelay": true,
-                    "tcpFastOpen": true,
-                    "mark": 255
-                }
-            },
-            "tag": "proxy10"
-        },
-        {
-            "protocol": "freedom",
-            "settings": {
-                "domainStrategy": "UseIP"
-            },
-            "tag": "direct"
-        },
-        {
-            "tag": "fragment",
-            "protocol": "freedom",
-            "settings": {
-                "domainStrategy": "AsIs",
-                "fragment": {
-                    "packets": "tlshello",
-                    "length": "20-30",
-                    "interval": "1"
-                }
-            },
-            "streamSettings": {
-                "sockopt": {
-                    "tcpKeepAliveIdle": 60,
-                    "tcpNoDelay": true,
-                    "tcpFastOpen": true,
-                    "mark": 255
-                }
-            }
-        },
-        {
-            "protocol": "blackhole",
-            "settings": {
-                "response": {
-                    "type": "none"
-                }
-            },
-            "tag": "block"
-        },
-        {
-            "protocol": "dns",
-            "tag": "dns-out"
-        }
-    ],
-    "fakedns": [
-        {
-            "ipPool": "198.18.0.0/15",
-            "poolSize": 65535
-        },
-        {
-            "ipPool": "fc00::/18",
-            "poolSize": 65535
-        }
-    ],
-    "burstobservatory": {
-        "pingconfig": {
-            "connectivity": "http://detectportal.firefox.com/success.txt",
-            "destination": "http://detectportal.firefox.com/success.txt",
-            "interval": "11s",
-            "sampling": 20,
-            "timeout": "10s"
-        },
-        "subjectSelector": [
-            "proxy",
-            "proxy1",
-            "proxy2",
-            "proxy3",
-            "proxy4",
-            "proxy5",
-            "proxy6",
-            "proxy7",
-            "proxy8",
-            "proxy9",
-            "proxy10"
+    {
+      "listen": "0.0.0.0",
+      "port": 10809,
+      "protocol": "http",
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls",
+          "fakedns"
+        ],
+        "enabled": true
+      },
+      "tag": "http"
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "45.159.149.39",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
         ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "alpn": [
+            "h3"
+          ],
+          "minVersion": "1.3",
+          "serverName": "pages.dev"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "6kmed.pages.dev"
+          },
+          "path": "/?ed=2048",
+          "heartbeatPeriod": 1
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy"
     },
-    "remarks": "LeastLoad Worker"
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "193.105.6.84",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "alpn": [
+            "h3"
+          ],
+          "minVersion": "1.3",
+          "serverName": "pages.dev"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "6kmed.pages.dev"
+          },
+          "path": "/?ed=2048",
+          "heartbeatPeriod": 1
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy1"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "37.32.12.201",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "alpn": [
+            "h3"
+          ],
+          "minVersion": "1.3",
+          "serverName": "pages.dev"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "6kmed.pages.dev"
+          },
+          "path": "/?ed=2048",
+          "heartbeatPeriod": 1
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy2"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "62.60.233.213",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "alpn": [
+            "h3"
+          ],
+          "minVersion": "1.3",
+          "serverName": "pages.dev"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "6kmed.pages.dev"
+          },
+          "path": "/?ed=2048",
+          "heartbeatPeriod": 1
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy3"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "188.121.119.90",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "alpn": [
+            "h3"
+          ],
+          "minVersion": "1.3",
+          "serverName": "pages.dev"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "6kmed.pages.dev"
+          },
+          "path": "/?ed=2048",
+          "heartbeatPeriod": 1
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy4"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "62.60.185.200",
+            "port": 2096,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "alpn": [
+            "h3"
+          ],
+          "minVersion": "1.3",
+          "serverName": "pages.dev"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "6kmed.pages.dev"
+          },
+          "path": "/?ed=2048",
+          "heartbeatPeriod": 1
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy5"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "84.47.234.19",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "alpn": [
+            "h3"
+          ],
+          "minVersion": "1.3",
+          "serverName": "pages.dev"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "6kmed.pages.dev"
+          },
+          "path": "/?ed=2048",
+          "heartbeatPeriod": 1
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy6"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "213.176.2.99",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "alpn": [
+            "h3"
+          ],
+          "minVersion": "1.3",
+          "serverName": "pages.dev"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "6kmed.pages.dev"
+          },
+          "path": "/?ed=2048",
+          "heartbeatPeriod": 1
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy7"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "188.245.189.10",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "alpn": [
+            "h3"
+          ],
+          "minVersion": "1.3",
+          "serverName": "pages.dev"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "6kmed.pages.dev"
+          },
+          "path": "/?ed=2048",
+          "heartbeatPeriod": 1
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy8"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "194.5.195.50",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "alpn": [
+            "h3"
+          ],
+          "minVersion": "1.3",
+          "serverName": "pages.dev"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "6kmed.pages.dev"
+          },
+          "path": "/?ed=2048",
+          "heartbeatPeriod": 1
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy9"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "37.32.13.3",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "alpn": [
+            "h3"
+          ],
+          "minVersion": "1.3",
+          "serverName": "pages.dev"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "6kmed.pages.dev"
+          },
+          "path": "/?ed=2048",
+          "heartbeatPeriod": 1
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy10"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIP"
+      },
+      "tag": "direct"
+    },
+    {
+      "tag": "fragment",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "AsIs",
+        "fragment": {
+          "packets": "tlshello",
+          "length": "20-30",
+          "interval": "1"
+        }
+      },
+      "streamSettings": {
+        "sockopt": {
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      }
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "none"
+        }
+      },
+      "tag": "block"
+    },
+    {
+      "protocol": "dns",
+      "tag": "dns-out"
+    }
+  ],
+  "fakedns": [
+    {
+      "ipPool": "198.18.0.0/15",
+      "poolSize": 65535
+    },
+    {
+      "ipPool": "fc00::/18",
+      "poolSize": 65535
+    }
+  ],
+  "burstobservatory": {
+    "pingconfig": {
+      "connectivity": "http://detectportal.firefox.com/success.txt",
+      "destination": "http://detectportal.firefox.com/success.txt",
+      "interval": "11s",
+      "sampling": 20,
+      "timeout": "10s"
+    },
+    "subjectSelector": [
+      "proxy",
+      "proxy1",
+      "proxy2",
+      "proxy3",
+      "proxy4",
+      "proxy5",
+      "proxy6",
+      "proxy7",
+      "proxy8",
+      "proxy9",
+      "proxy10"
+    ]
+  },
+  "remarks": "LeastLoad Worker",
+  "newKey": "newValue"
 }
