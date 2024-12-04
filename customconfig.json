@@ -129,6 +129,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy"
@@ -162,6 +169,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy1"
@@ -195,6 +209,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy2"
@@ -228,6 +249,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy3"
@@ -261,6 +289,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy4"
@@ -294,6 +329,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy5"
@@ -327,6 +369,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy6"
@@ -360,6 +409,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy7"
@@ -393,6 +449,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy8"
@@ -426,6 +489,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy9"
@@ -459,6 +529,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy10"
@@ -492,6 +569,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy11"
@@ -525,6 +609,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy12"
@@ -558,6 +649,13 @@
             "Host": "6kmed.pages.dev"
           },
           "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
         }
       },
       "tag": "proxy13"
@@ -568,6 +666,18 @@
         "domainStrategy": "useip"
       },
       "tag": "direct"
+    },
+    {
+      "tag": "fragment",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "AsIs",
+        "fragment": {
+          "packets": "tlshello",
+          "length": "20-30",
+          "interval": "1"
+        }
+      }
     },
     {
       "protocol": "blackhole",
