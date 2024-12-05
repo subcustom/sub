@@ -689,34 +689,6 @@
       "tag": "proxy30"
     },
     {
-      "protocol": "vmess",
-      "settings": {
-        "vnext": [
-          {
-            "address": "23.154.136.47",
-            "port": 22324,
-            "users": [
-              {
-                "id": "04621bae-ab36-11ec-b909-0242ac120002",
-                "level": 8,
-                "security": "auto"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      },
-      "tag": "proxy40"
-    },
-    {
       "protocol": "freedom",
       "settings": {
         "domainStrategy": "useip"
@@ -772,10 +744,7 @@
       "proxy11",
       "proxy12",
       "proxy13",
-      "proxy30",
-      "proxy40",
-      "proxy30",
-      "proxy40"
+      "proxy30"
     ]
   },
   "routing": {
@@ -796,10 +765,7 @@
           "proxy11",
           "proxy12",
           "proxy13",
-          "proxy30",
-          "proxy40",
-          "proxy30",
-          "proxy40"
+          "proxy30"
         ],
         "strategy": {
           "type": "LeastLoad"
