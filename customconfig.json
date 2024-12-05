@@ -661,6 +661,34 @@
       "tag": "proxy13"
     },
     {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "23.154.136.47",
+            "port": 22324,
+            "users": [
+              {
+                "id": "04621bae-ab36-11ec-b909-0242ac120002",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "",
+        "tcpSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      },
+      "tag": "vmess"
+    },
+    {
       "protocol": "freedom",
       "settings": {
         "domainStrategy": "useip"
@@ -715,7 +743,8 @@
       "proxy10",
       "proxy11",
       "proxy12",
-      "proxy13"
+      "proxy13",
+      "vmess"
     ]
   },
   "routing": {
@@ -735,7 +764,8 @@
           "proxy10",
           "proxy11",
           "proxy12",
-          "proxy13"
+          "proxy13",
+          "vmess"
         ],
         "strategy": {
           "type": "LeastLoad"
