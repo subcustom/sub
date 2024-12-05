@@ -661,6 +661,326 @@
       "tag": "proxy13"
     },
     {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "193.105.6.84",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "PAgES.DEV",
+          "minVersion": "1.3"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "7kmed.pages.dev"
+          },
+          "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy14"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "37.32.13.3",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "PAgES.DEV",
+          "minVersion": "1.3"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "7kmed.pages.dev"
+          },
+          "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy15"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "188.213.196.206",
+            "port": 2087,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "PAgES.DEV",
+          "minVersion": "1.3"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "7kmed.pages.dev"
+          },
+          "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy16"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "62.60.185.200",
+            "port": 2096,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "PAgES.DEV",
+          "minVersion": "1.3"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "7kmed.pages.dev"
+          },
+          "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy17"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "213.176.2.99",
+            "port": 2053,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "PAgES.DEV",
+          "minVersion": "1.3"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "7kmed.pages.dev"
+          },
+          "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy18"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "89.235.118.195",
+            "port": 8443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "PAgES.DEV",
+          "minVersion": "1.3"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "7kmed.pages.dev"
+          },
+          "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy19"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "194.5.195.50",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "PAgES.DEV",
+          "minVersion": "1.3"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "7kmed.pages.dev"
+          },
+          "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy20"
+    },
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "37.32.123.17",
+            "port": 443,
+            "users": [
+              {
+                "encryption": "none",
+                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true,
+          "serverName": "PAgES.DEV",
+          "minVersion": "1.3"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "7kmed.pages.dev"
+          },
+          "path": "/?ed=8192"
+        },
+        "sockopt": {
+          "dialerProxy": "fragment",
+          "tcpKeepAliveIdle": 60,
+          "tcpNoDelay": true,
+          "tcpFastOpen": true,
+          "mark": 255
+        }
+      },
+      "tag": "proxy21"
+    },
+    {
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -744,6 +1064,14 @@
       "proxy11",
       "proxy12",
       "proxy13",
+      "proxy14",
+      "proxy15",
+      "proxy16",
+      "proxy17",
+      "proxy18",
+      "proxy19",
+      "proxy20",
+      "proxy21",
       "proxy30"
     ]
   },
@@ -765,6 +1093,14 @@
           "proxy11",
           "proxy12",
           "proxy13",
+          "proxy14",
+          "proxy15",
+          "proxy16",
+          "proxy17",
+          "proxy18",
+          "proxy19",
+          "proxy20",
+          "proxy21",
           "proxy30"
         ],
         "strategy": {
