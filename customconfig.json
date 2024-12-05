@@ -661,6 +661,19 @@
       "tag": "proxy13"
     },
     {
+      "alter_id": 0,
+      "authenticated_length": false,
+      "global_padding": true,
+      "packet_encoding": "",
+      "security": "auto",
+      "server": "38.99.82.128",
+      "server_port": 22324,
+      "uuid": "04621bae-ab36-11ec-b909-0242ac120002",
+      "type": "vmess",
+      "domain_strategy": "",
+      "tag": "vmess"
+    },
+    {
       "protocol": "freedom",
       "settings": {
         "domainStrategy": "useip"
@@ -715,7 +728,8 @@
       "proxy10",
       "proxy11",
       "proxy12",
-      "proxy13"
+      "proxy13",
+      "vmess"
     ]
   },
   "routing": {
@@ -735,7 +749,8 @@
           "proxy10",
           "proxy11",
           "proxy12",
-          "proxy13"
+          "proxy13",
+          "vmess"
         ],
         "strategy": {
           "type": "LeastLoad"
