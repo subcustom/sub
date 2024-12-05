@@ -748,14 +748,10 @@
       "proxy11",
       "proxy12",
       "proxy13",
-      [
-        "Kevin",
-        "Moradi"
-      ],
-      [
-        "Kevin",
-        "Moradi"
-      ]
+      "Kevin",
+      "Moradi",
+      "Kevin",
+      "Moradi"
     ]
   },
   "routing": {
@@ -776,14 +772,10 @@
           "proxy11",
           "proxy12",
           "proxy13",
-          [
-            "Kevin",
-            "Moradi"
-          ],
-          [
-            "Kevin",
-            "Moradi"
-          ]
+          "Kevin",
+          "Moradi",
+          "Kevin",
+          "Moradi"
         ],
         "strategy": {
           "type": "LeastLoad"
