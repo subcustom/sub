@@ -755,7 +755,7 @@
       "destination": "http://detectportal.firefox.com/success.txt",
       "interval": "11s",
       "sampling": 20,
-      "timeout": "10s"
+      "timeout": "1s"
     },
     "subjectSelector": [
       "proxy",
