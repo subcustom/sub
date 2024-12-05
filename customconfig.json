@@ -691,6 +691,38 @@
     {
       "protocol": "dns",
       "tag": "dns-out"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "Kevin",
+      "server": "kevin.serverv.net",
+      "server_port": 8443,
+      "password": "KevinZakarian",
+      "tls": {
+        "enabled": true,
+        "server_name": "",
+        "insecure": true
+      },
+      "obfs": {
+        "type": "salamander",
+        "password": "KevinZakarian"
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "Moradi",
+      "server": "156.67.30.77",
+      "server_port": 48173,
+      "password": "1051bfbb-90db-4261-b5e4-8b91f62b436f",
+      "tls": {
+        "enabled": true,
+        "server_name": "con.bitplatform-servers.com",
+        "insecure": false
+      },
+      "obfs": {
+        "type": "salamander",
+        "password": "zeryYYEPSzWiCPYstfUb"
+      }
     }
   ],
   "burstobservatory": {
@@ -715,7 +747,15 @@
       "proxy10",
       "proxy11",
       "proxy12",
-      "proxy13"
+      "proxy13",
+      [
+        "Kevin",
+        "Moradi"
+      ],
+      [
+        "Kevin",
+        "Moradi"
+      ]
     ]
   },
   "routing": {
@@ -735,7 +775,15 @@
           "proxy10",
           "proxy11",
           "proxy12",
-          "proxy13"
+          "proxy13",
+          [
+            "Kevin",
+            "Moradi"
+          ],
+          [
+            "Kevin",
+            "Moradi"
+          ]
         ],
         "strategy": {
           "type": "LeastLoad"
