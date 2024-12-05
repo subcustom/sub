@@ -661,33 +661,6 @@
       "tag": "proxy13"
     },
     {
-      "alter_id": 0,
-      "authenticated_length": false,
-      "global_padding": true,
-      "packet_encoding": "",
-      "security": "auto",
-      "server": "23.162.200.94",
-      "server_port": 443,
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "server_name": "wrmelmwxlf.gktevlrqznwqqozy.fabpfs66gizmnojhcvqxwl.kytrcfzqla87gvgvs6c7kjnrubuh.cc"
-      },
-      "transport": {
-        "headers": {
-          "Host": [
-            "wrmelmwxlf.gktevlrqznwqqozy.fabpfs66gizmnojhcvqxwl.kytrcfzqla87gvgvs6c7kjnrubuh.cc"
-          ]
-        },
-        "path": "/linkvws",
-        "type": "ws"
-      },
-      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
-      "type": "vmess",
-      "domain_strategy": "",
-      "tag": "proxy20"
-    },
-    {
       "protocol": "freedom",
       "settings": {
         "domainStrategy": "useip"
@@ -742,9 +715,7 @@
       "proxy10",
       "proxy11",
       "proxy12",
-      "proxy13",
-      "proxy20",
-      "proxy20"
+      "proxy13"
     ]
   },
   "routing": {
@@ -764,9 +735,7 @@
           "proxy10",
           "proxy11",
           "proxy12",
-          "proxy13",
-          "proxy20",
-          "proxy20"
+          "proxy13"
         ],
         "strategy": {
           "type": "LeastLoad"
