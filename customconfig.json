@@ -661,6 +661,22 @@
       "tag": "proxy13"
     },
     {
+      "type": "hysteria2",
+      "tag": "kevin",
+      "server": "kevin.serverv.net",
+      "server_port": 8443,
+      "password": "KevinZakarian",
+      "tls": {
+        "enabled": true,
+        "server_name": "",
+        "insecure": true
+      },
+      "obfs": {
+        "type": "salamander",
+        "password": "KevinZakarian"
+      }
+    },
+    {
       "protocol": "freedom",
       "settings": {
         "domainStrategy": "useip"
@@ -715,7 +731,8 @@
       "proxy10",
       "proxy11",
       "proxy12",
-      "proxy13"
+      "proxy13",
+      "kevin"
     ]
   },
   "routing": {
@@ -735,7 +752,8 @@
           "proxy10",
           "proxy11",
           "proxy12",
-          "proxy13"
+          "proxy13",
+          "kevin"
         ],
         "strategy": {
           "type": "LeastLoad"
