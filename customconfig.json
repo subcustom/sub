@@ -662,7 +662,7 @@
     },
     {
       "type": "hysteria2",
-      "tag": "proxy",
+      "tag": "kevin",
       "server": "kevin.serverv.net",
       "server_port": 8443,
       "password": "KevinZakarian",
@@ -731,8 +731,7 @@
       "proxy10",
       "proxy11",
       "proxy12",
-      "proxy13",
-      "proxy"
+      "proxy13"
     ]
   },
   "routing": {
@@ -752,8 +751,7 @@
           "proxy10",
           "proxy11",
           "proxy12",
-          "proxy13",
-          "proxy"
+          "proxy13"
         ],
         "strategy": {
           "type": "LeastLoad"
