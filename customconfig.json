@@ -661,17 +661,6 @@
       "tag": "proxy13"
     },
     {
-      "method": "chacha20-ietf-poly1305",
-      "password": "g13S7doXar0A",
-      "plugin": "",
-      "plugin_opts": "",
-      "server": "us.fourzerofour.web.id",
-      "server_port": 443,
-      "type": "shadowsocks",
-      "domain_strategy": "",
-      "tag": "SS"
-    },
-    {
       "protocol": "freedom",
       "settings": {
         "domainStrategy": "useip"
@@ -726,8 +715,7 @@
       "proxy10",
       "proxy11",
       "proxy12",
-      "proxy13",
-      "SS"
+      "proxy13"
     ]
   },
   "routing": {
@@ -747,8 +735,7 @@
           "proxy10",
           "proxy11",
           "proxy12",
-          "proxy13",
-          "SS"
+          "proxy13"
         ],
         "strategy": {
           "type": "LeastLoad"
