@@ -105,7 +105,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "62.60.150.116",
+            "address": "89.235.118.195",
             "port": 2053,
             "users": [
               {
@@ -145,7 +145,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "62.60.151.107",
+            "address": "78.110.122.82",
             "port": 2053,
             "users": [
               {
@@ -185,7 +185,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "89.235.118.195",
+            "address": "62.60.150.116",
             "port": 2053,
             "users": [
               {
@@ -225,7 +225,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "95.81.86.178",
+            "address": "213.176.7.26",
             "port": 2053,
             "users": [
               {
@@ -265,7 +265,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "62.60.141.170",
+            "address": "62.60.151.107",
             "port": 2053,
             "users": [
               {
@@ -305,7 +305,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "78.110.122.82",
+            "address": "62.60.141.170",
             "port": 2053,
             "users": [
               {
@@ -385,7 +385,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "62.60.185.200",
+            "address": "62.60.233.213",
             "port": 443,
             "users": [
               {
@@ -465,8 +465,8 @@
       "settings": {
         "vnext": [
           {
-            "address": "84.47.234.19",
-            "port": 443,
+            "address": "95.81.86.178",
+            "port": 2053,
             "users": [
               {
                 "encryption": "none",
@@ -505,7 +505,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "62.60.233.213",
+            "address": "62.60.185.200",
             "port": 443,
             "users": [
               {
@@ -545,7 +545,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "193.105.6.84",
+            "address": "79.175.133.246",
             "port": 443,
             "users": [
               {
@@ -585,8 +585,8 @@
       "settings": {
         "vnext": [
           {
-            "address": "37.32.13.3",
-            "port": 2053,
+            "address": "84.47.234.19",
+            "port": 443,
             "users": [
               {
                 "encryption": "none",
@@ -625,127 +625,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "62.60.185.200",
-            "port": 2096,
-            "users": [
-              {
-                "encryption": "none",
-                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": true,
-          "serverName": "PAgES.DEV",
-          "minVersion": "1.3"
-        },
-        "wsSettings": {
-          "headers": {
-            "Host": "7kmed.pages.dev"
-          },
-          "path": "/?ed=8192"
-        },
-        "sockopt": {
-          "dialerProxy": "fragment",
-          "tcpKeepAliveIdle": 60,
-          "tcpNoDelay": true,
-          "tcpFastOpen": true,
-          "mark": 255
-        }
-      },
-      "tag": "proxy13"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "213.176.2.99",
-            "port": 2053,
-            "users": [
-              {
-                "encryption": "none",
-                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": true,
-          "serverName": "PAgES.DEV",
-          "minVersion": "1.3"
-        },
-        "wsSettings": {
-          "headers": {
-            "Host": "7kmed.pages.dev"
-          },
-          "path": "/?ed=8192"
-        },
-        "sockopt": {
-          "dialerProxy": "fragment",
-          "tcpKeepAliveIdle": 60,
-          "tcpNoDelay": true,
-          "tcpFastOpen": true,
-          "mark": 255
-        }
-      },
-      "tag": "proxy14"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "89.235.118.195",
-            "port": 8443,
-            "users": [
-              {
-                "encryption": "none",
-                "id": "89b3cbba-e6ac-485a-9481-976a0415eab9"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": true,
-          "serverName": "PAgES.DEV",
-          "minVersion": "1.3"
-        },
-        "wsSettings": {
-          "headers": {
-            "Host": "7kmed.pages.dev"
-          },
-          "path": "/?ed=8192"
-        },
-        "sockopt": {
-          "dialerProxy": "fragment",
-          "tcpKeepAliveIdle": 60,
-          "tcpNoDelay": true,
-          "tcpFastOpen": true,
-          "mark": 255
-        }
-      },
-      "tag": "proxy15"
-    },
-    {
-      "protocol": "vless",
-      "settings": {
-        "vnext": [
-          {
-            "address": "194.5.195.50",
+            "address": "188.121.119.90",
             "port": 443,
             "users": [
               {
@@ -778,35 +658,7 @@
           "mark": 255
         }
       },
-      "tag": "proxy16"
-    },
-    {
-      "protocol": "vmess",
-      "settings": {
-        "vnext": [
-          {
-            "address": "23.154.136.47",
-            "port": 22324,
-            "users": [
-              {
-                "id": "04621bae-ab36-11ec-b909-0242ac120002",
-                "level": 8,
-                "security": "auto"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "",
-        "tcpSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      },
-      "tag": "proxy30"
+      "tag": "proxy13"
     },
     {
       "protocol": "freedom",
@@ -863,11 +715,7 @@
       "proxy10",
       "proxy11",
       "proxy12",
-      "proxy13",
-      "proxy14",
-      "proxy15",
-      "proxy16",
-      "proxy30"
+      "proxy13"
     ]
   },
   "routing": {
@@ -887,11 +735,7 @@
           "proxy10",
           "proxy11",
           "proxy12",
-          "proxy13",
-          "proxy14",
-          "proxy15",
-          "proxy16",
-          "proxy30"
+          "proxy13"
         ],
         "strategy": {
           "type": "LeastLoad"
