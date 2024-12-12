@@ -915,7 +915,7 @@
         "type": "field"
       },
       {
-        "outboundTag": "balancer",
+        "balancerTag": "balancer",
         "port": "0-65535",
         "type": "field"
       }
